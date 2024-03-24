@@ -20,6 +20,11 @@ public class Lexer {
     }
 
     public Token nextToken() {
+    // Saltar espacios en blanco
+    while (position < input.length() && Character.isWhitespace(input.charAt(position))) {
+        position++;
+    }
+    
     if (position >= input.length()) {
         return new Token(TokenType.EOF, "");
     }

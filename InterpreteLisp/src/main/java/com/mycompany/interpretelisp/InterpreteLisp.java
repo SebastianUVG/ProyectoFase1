@@ -19,7 +19,7 @@ public class InterpreteLisp {
     }
 
     public Object evaluate(String input) {
-        Lexer lexer = new Lexer(input);
+    Lexer lexer = new Lexer(input);
         List<Token> tokens = new ArrayList<>();
         Token token = lexer.nextToken();
         while (token.getType() != TokenType.EOF) {
