@@ -10,15 +10,28 @@ package com.mycompany.interpretelisp;
  */
 import java.util.*;
 
+/**
+ * La clase Lexer se encarga de tokenizar cadenas de entrada en el intérprete de Lisp.
+ * Convierte una cadena de caracteres en una secuencia de tokens.
+ */
 public class Lexer {
     private final String input;
     private int position;
-
+    /**
+     * Construye un nuevo Lexer con la cadena de entrada especificada.
+     *
+     * @param input La cadena de entrada a tokenizar.
+     */
     public Lexer(String input) {
         this.input = input;
         this.position = 0;
     }
-
+    
+     /**
+     * Devuelve el próximo token de la cadena de entrada.
+     *
+     * @return El próximo token.
+     */
     public Token nextToken() {
     // Saltar espacios en blanco
     while (position < input.length() && Character.isWhitespace(input.charAt(position))) {

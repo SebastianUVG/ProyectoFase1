@@ -13,11 +13,22 @@ import java.util.*;
 
 public class InterpreteLisp {
     private final Environment environment;
+       /**
+     * Constructor de la clase InterpreteLisp.
+     * 
+     * @param environment El entorno en el que se ejecutará el intérprete.
+     */
 
     public InterpreteLisp(Environment environment) {
         this.environment = environment;
     }
-
+     /**
+     * Evalúa una expresión de Lisp.
+     * 
+     * @param input La expresión de Lisp a evaluar.
+     * @return El resultado de evaluar la expresión.
+     */
+    
     public Object evaluate(String input) {
     Lexer lexer = new Lexer(input);
         List<Token> tokens = new ArrayList<>();
@@ -35,7 +46,12 @@ public class InterpreteLisp {
 
         return environment.eval((ListExpression) expression);
     }
-
+    /**
+     * Método principal que inicia el intérprete de Lisp.
+     * Permite al usuario ingresar expresiones de Lisp para evaluarlas.
+     * 
+     * @param args Los argumentos de la línea de comandos (no se utilizan en este caso).
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Environment environment = new Environment();

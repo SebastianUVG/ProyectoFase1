@@ -10,15 +10,27 @@ package com.mycompany.interpretelisp;
  */
 import java.util.*;
 
+/**
+ * Clase que se encarga de analizar una lista de tokens y construir una expresión correspondiente en el intérprete de Lisp.
+ */
 public class Parser {
     private final List<Token> tokens;
     private int position;
-
+    
+     /**
+     * Construye un nuevo objeto Parser con la lista de tokens especificada.
+     *
+     * @param tokens La lista de tokens a analizar.
+     */
     public Parser(List<Token> tokens) {
         this.tokens = tokens;
         this.position = 0;
     }
-
+    /**
+     * Analiza la lista de tokens y construye la expresión correspondiente.
+     *
+     * @return La expresión resultante del análisis de tokens.
+     */
     public Expression parse() {
     if (tokens.isEmpty()) {
         return null;

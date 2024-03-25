@@ -11,23 +11,52 @@ package com.mycompany.interpretelisp;
 import static java.lang.System.console;
 import java.util.*;
 import java.util.function.BiFunction;
+/**
+ * Clase que representa el entorno de ejecución del intérprete de Lisp.
+ */
 public class Environment {
     private final Map<String, Object> variables;
     private final Map<String, FunctionExpression> functions;
-
+     /**
+     * Constructor de la clase Environment.
+     * Inicializa las variables y funciones del entorno.
+     */
     public Environment() {
         this.variables = new HashMap<>();
         this.functions = new HashMap<>();
     }
-
+     /**
+     * Obtiene el valor de una variable del entorno.
+     * 
+     * @param name El nombre de la variable.
+     * @return El valor de la variable.
+     */
     public Object getVariable(String name) {
         return variables.get(name);
     }
-
+     /**
+     * Establece el valor de una variable en el entorno.
+     * 
+     * @param name El nombre de la variable.
+     * @param value El valor de la variable.
+     */
+    
     public void setVariable(String name, Object value) {
         variables.put(name, value);
     }
+    
+    
+    /**
+     * Evalúa una expresión de tipo ListExpression en el entorno.
+     * 
+     * @param listExpression La expresión de tipo ListExpression a evaluar.
+     * @return El resultado de la evaluación de la expresión.
+     */
+    
     public Object eval(ListExpression listExpression) {
+         if (listExpression == null) {
+        throw new NullPointerException("listExpression no puede ser null");
+    }
     List<Expression> expressions = listExpression.getExpressions();
     Object result = null;
     for (Expression expression : expressions) {
@@ -84,6 +113,16 @@ public class Environment {
     }
     return result;
 }
+    
+     /**
+     * Evalúa una expresión aritmética dada un operador y una lista de operandos.
+     * 
+     * @param operator El operador aritmético (+, -, *, /).
+     * @param operands La lista de operandos sobre los cuales se aplicará el operador.
+     * @return El resultado de la evaluación de la expresión aritmética.
+     * @throws ArithmeticException Si se intenta dividir por cero.
+     */
+    
     private int evaluateArithmeticExpression(String operator, List<Integer> operands) {
     double result = operands.get(0);
     for (int i = 1; i < operands.size(); i++) {
